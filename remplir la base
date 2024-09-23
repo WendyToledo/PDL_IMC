@@ -5,3 +5,14 @@ VALUES
 ('john.doe@example.com', 'john.doe24', '2024-09-23 10:30:00', '2024-09-24 11:00:00'),
 ('jane.smith@example.com', 'jane.smith24', '2024-09-22 09:15:00', '2024-09-23 14:45:00'),
 ('bob.johnson@example.com', 'bob.johnson24', '2024-09-21 12:00:00', '2024-09-23 16:30:00');
+
+
+-- Insérer des mesures dans la table 'measurements'
+INSERT INTO measurements (user_id, weight, height, calculated_imc, taken_at)
+VALUES 
+(1, 75.0, 1.80, 23.15, '2024-09-23 12:30:00'),
+(2, 65.5, 1.65, 24.06, '2024-09-23 13:00:00'),
+(3, 82.3, 1.75, 26.88, '2024-09-22 09:45:00'),
+(1, 74.5, 1.80, 22.98, '2024-09-24 08:15:00'),
+(2, 66.0, 1.65, 24.24, '2024-09-25 10:00:00');
+
