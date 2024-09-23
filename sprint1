@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+session_start();
+
+try{
+$pdo=new PDO("pgsql:host=localhost;dbname=etd","uapv2202361","LMwqgH"); 
+}
+catch(PDOException $e){
+             echo $e->getMessage();
+            exit();
+          }
+    //récuperation des données du formulaire
+$login=$_POST["email"]; 
+$pass=$_POST["mdp"]; 
+$req=$pdo->prepare("select * from users where email = :email;"); 
+$req->bindParam(':email', $login);
+			$req->execute(); 
+            
+            // Récupération de l'utilisateur
+			$user=$req->fetch(PDO::FETCH_ASSOC);
+			
+            //--------------------------------------
+			if ($user && password_verify($pass,
+            $user['password_hash'])) {
+				// Si le mot de passe est correct, on démarre une session pour cet utilisateur
+    $_SESSION['user_id'] = $user['id'];
+    $_SESSION['email'] = $user['email'];
+
+    // Mise à jour de la dernière connexion
+    $updateLastLogin = $pdo->prepare("UPDATE users SET last_login = NOW() WHERE id = :id");
+    $updateLastLogin->bindParam(':id', $user['id']);
+    $updateLastLogin->execute();
+			
+            // Redirection vers la page de calcul de l'IMC ou tableau de bord
+    header("Location: calcul_imc.php");
+    exit();
+				}
+                else {
+         $erreur="Erreur de login ou mot de passe incorrect";
+echo $erreur; 
+}
+?> 
+
+</body>
+</html>
