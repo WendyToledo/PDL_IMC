@@ -38,6 +38,35 @@ class User {
     public function getMeasurements() {
         return $this->measurements;
     }*/
+
+    // Getters and Setters
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+
+    public function getPasswordHash() {
+        return $this->password_hash;
+    }
+
+    public function setPasswordHash($password_hash) {
+        $this->password_hash = password_hash($password_hash, PASSWORD_BCRYPT);
+    }
+
+    public function getLastLogin() {
+        return $this->last_login;
+    }
+
+    public function setLastLogin($last_login) {
+        $this->last_login = $last_login;
+    }
 }
 
 ?>
