@@ -15,11 +15,3 @@ CREATE TABLE measurements (
     calculated_imc DECIMAL(4, 2),        -- IMC calculé
     taken_at TIMESTAMP DEFAULT NOW()     -- Date et heure de la prise de mesure
 );
-
-CREATE TABLE sessions (
-    id SERIAL PRIMARY KEY,                -- Identifiant unique pour chaque session
-    user_id INT REFERENCES users(id),     -- Clé étrangère vers l'utilisateur
-    session_token VARCHAR(255) UNIQUE,    -- Jeton de session unique pour maintenir l'utilisateur connecté
-    created_at TIMESTAMP DEFAULT NOW(),   -- Date et heure de création de la session
-    expires_at TIMESTAMP                  -- Date et heure d'expiration de la session
-);
