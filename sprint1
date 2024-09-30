@@ -6,7 +6,7 @@
 session_start();
 
 try{
-$pdo=new PDO("pgsql:host=localhost;dbname=etd","uapv2202361","LMwqgH"); 
+$pdo=new PDO("pgsql:host=localhost;dbname=etd","uapv2500724","SWrrWJ"); 
 }
 catch(PDOException $e){
              echo $e->getMessage();
