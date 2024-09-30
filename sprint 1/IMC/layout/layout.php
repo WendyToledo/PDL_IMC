@@ -64,10 +64,6 @@
 				padding: 20px;
 				border-radius: 5px;
 			}
-            .button-container {
-                display: flex;
-                gap: 10px; /* Ajustez cet espace selon vos besoins */
-            }
 
 			#close {
 				color: #aaaaaa;
@@ -89,16 +85,18 @@
 				background-color: #6495ED;
                 font-weight: bold;
 				cursor: pointer;
-                justify-content: space-between;
                 margin-top: 20px;
+                width: 150px;
 
 
 			}
 
-            inscriptionBtn {
-                padding: 10px 20px;
-                font-size: 16px;
+            .boutons{
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
             }
+
 			.bouton:hover {
 				background-color: #B0C4DE;
 			}
@@ -109,14 +107,14 @@
 		
 		<div class="bandeau"> 
 			<h1>Calcul d'IMC </h1>
-			<div id="boutons">
-    <?php if(isset($_SESSION['id'])) {
-        echo('<button id="deconnexionBtn" onclick="deco()" class="bouton">Déconnexion</button>');
-    } else {
-        echo ('<button id="connexionBtn" onclick="co()" class="bouton">Connexion</button>');
-        echo ('<button id="InscriptionBtn" onclick="inscription()" class="bouton">Inscription</button');
-    } ?>
-</div>
+			<div class="boutons">
+                <?php if(isset($_SESSION['id'])) {
+                    echo('<button id="deconnexionBtn" onclick="deco()" class="bouton">Déconnexion</button>');
+                } else {
+                    echo ('<button id="connexionBtn" onclick="co()" class="bouton">Connexion</button>');
+                    echo ('<button id="InscriptionBtn" onclick="inscription()" class="bouton">Inscription</button');
+                } ?>
+            </div>
 		</div>
 		<?php if(isset($_SESSION['id'])) {
 			echo 'Bienvenu '.$_SESSION['id'];
@@ -146,8 +144,6 @@
                     <input type="text" id="nom" name="nom"required><br><br>
                     <label for="prenom">Prenom</label>
                     <input type="text" id="prenom" name="prenom"required><br><br>
-                    <label for="date">Date de naissance</label>
-                    <input type="text" id="date" name="date"required><br><br>
                     <label for="email">Email</label>
                     <input type="text" id="email" name="email"required><br><br>
                     <label for="password">Mot de passe</label>
