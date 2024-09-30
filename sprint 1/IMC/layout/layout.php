@@ -26,6 +26,16 @@
 				border-radius: 4px;
 				background-color: #B0C4DE;
 			}
+            label{
+                color: black;
+            }
+            h2{
+                color : black;
+            }
+            inscriptionModal{
+                margin-right: 4px;
+            }
+
 			input[type=submit]:hover {
 				background-color: #6495ED;
 			}
@@ -33,6 +43,7 @@
 				background-color: #6495ED;
 				padding: 10px;
 				color: white;
+
 			}
 			h1 {
 				text-align:center;
@@ -53,6 +64,11 @@
 				padding: 20px;
 				border-radius: 5px;
 			}
+            .button-container {
+                display: flex;
+                gap: 10px; /* Ajustez cet espace selon vos besoins */
+            }
+
 			#close {
 				color: #aaaaaa;
 				float: right;
@@ -71,10 +87,18 @@
 				border: 2px solid white;
 				border-radius: 4px;
 				background-color: #6495ED;
-                padding-block-end: 20px;
                 font-weight: bold;
 				cursor: pointer;
+                justify-content: space-between;
+                margin-top: 20px;
+
+
 			}
+
+            inscriptionBtn {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
 			.bouton:hover {
 				background-color: #B0C4DE;
 			}
@@ -124,10 +148,12 @@
                     <input type="text" id="prenom" name="prenom"required><br><br>
                     <label for="date">Date de naissance</label>
                     <input type="text" id="date" name="date"required><br><br>
-                    <label for="pseudo">Pseudo</label>
-                    <input type="text" id="pseudo" name="pseudo"required><br><br>
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email"required><br><br>
                     <label for="password">Mot de passe</label>
                     <input type="text" id="pass" name="pass"required><br><br>
+                    <label for="text">Confirmer votre mot de passe</label>
+                    <input type="text" id="confirm-pass" name="confirm-pass"required><br><br>
                     <div id="inscription"></div><br><br>
                     <input type="submit" value="S'inscrire">
                 </form>
