@@ -4,7 +4,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /** 
  * @Entity
- * @Table(name="uapv2202361.users")
+ * @Table(name="uapv2500724.users")
  */
 class users {
 

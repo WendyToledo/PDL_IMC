@@ -71,7 +71,8 @@
 				border: 2px solid white;
 				border-radius: 4px;
 				background-color: #6495ED;
-				font-weight: bold;
+                padding-block-end: 20px;
+                font-weight: bold;
 				cursor: pointer;
 			}
 			.bouton:hover {
@@ -89,6 +90,7 @@
         echo('<button id="deconnexionBtn" onclick="deco()" class="bouton">Déconnexion</button>');
     } else {
         echo ('<button id="connexionBtn" onclick="co()" class="bouton">Connexion</button>');
+        echo ('<button id="InscriptionBtn" onclick="inscription()" class="bouton">Inscription</button');
     } ?>
 </div>
 		</div>
@@ -109,6 +111,28 @@
 				</form>
 			</div>
 		</div>
+
+
+        <div id="inscriptionModal" class="modal">
+            <div class="modal-content">
+                <span id="close" class="closeInscription" onclick="document.getElementById('inscriptionModal').style.display = 'none'">&times;</span>
+                <h2>Inscription</h2>
+                <form id="form_inscription" method="POST">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom"required><br><br>
+                    <label for="prenom">Prenom</label>
+                    <input type="text" id="prenom" name="prenom"required><br><br>
+                    <label for="date">Date de naissance</label>
+                    <input type="text" id="date" name="date"required><br><br>
+                    <label for="pseudo">Pseudo</label>
+                    <input type="text" id="pseudo" name="pseudo"required><br><br>
+                    <label for="password">Mot de passe</label>
+                    <input type="text" id="pass" name="pass"required><br><br>
+                    <div id="inscription"></div><br><br>
+                    <input type="submit" value="S'inscrire">
+                </form>
+            </div>
+        </div>
 	</body>
 	<script>
 		function deco () {
@@ -123,6 +147,10 @@
 		function co () {
 			document.getElementById("connexionModal").style.display = "flex";
 		};
+
+        function inscription(){
+            document.getElementById("inscriptionModal").style.display = "flex";
+        }
 		
 	</script>
 </html>
