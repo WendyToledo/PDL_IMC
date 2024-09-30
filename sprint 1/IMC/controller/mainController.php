@@ -17,6 +17,7 @@ class mainController
 		if($user) {
 			$_SESSION['user_id'] = $user->id;
 			$context->utilisateur  =$user;
+			$user1=userTable::updateLastLogin($identifiant,$pass);
 			return context::SUCCESS;
 		}
 		return context::ERROR;
@@ -28,4 +29,33 @@ class mainController
 		
 		return context::SUCCESS;
 	 }
+// Méthode de calcul de l'IMC
+public static function calculImc($request, $context)
+{
+	// Vérification de la présence des paramètres nécessaires
+	$poids = isset($_POST['poids']) ? (float)$_POST['poids'] : null;
+	$taille = isset($_POST['taille']) ? (float)$_POST['taille'] : null;
+
+	// Ajout de debug pour voir les valeurs soumises
+    error_log("Poids: " . $poids);
+    error_log("Taille: " . $taille);
+
+	// Assurez-vous que les valeurs sont valides
+	if ($poids && $taille && $taille > 0) {
+		// Calcul de l'IMC
+		$imc =$poids /($taille * $taille)*10000;
+
+		// On peut formater l'IMC à 2 décimales
+		$context->imc = $imc;
+
+		// Retourne le succès avec les données calculées
+		return context::SUCCESS;
+	} else {
+		// Si les paramètres sont manquants ou incorrects
+		$context->errorMessage = "Veuillez entrer un poids et une taille valides.";
+		return context::ERROR;
+	}
 }
+
+}
+

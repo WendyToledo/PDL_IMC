@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		   <script src="js/soumissionConnexion.js"></script>
+		   <script src="js/calculImc.js"></script>
 		<title> Calcul d'IMC </title>
 		<style>
 			body {
@@ -28,6 +29,11 @@
 			}
 			input[type=submit]:hover {
 				background-color: #6495ED;
+			}
+			.container {
+				border-radius: 5px;
+				background-color: #f2f2f2;
+				padding: 20px;
 			}
 			.bandeau {
 				background-color: #6495ED;
@@ -77,6 +83,17 @@
 			.bouton:hover {
 				background-color: #B0C4DE;
 			}
+			.input {
+            position: relative;
+            display: inline-block;
+			}
+
+			.input .unit {
+				position: absolute;
+				right: 10px;
+				top: 45%;
+				color: #000000;
+			}
 		</style>
 	</head>
 
@@ -109,6 +126,29 @@
 				</form>
 			</div>
 		</div>
+		<br><br>
+		<div id="page_maincontent">	
+				<div class="container">
+					<form id="form_imc" method="POST">
+						<div class="input">
+							<label for="taille">Taille</label>
+							<input type="text" name="taille" id="taille" placeholder="Indiquer votre taille" required oninput="notLetter(this)">
+							<span class="unit">cm</span>
+						</div>
+						<br><br>
+						<div class="input">	
+							<label for="depart">Poids</label>
+							<input type="text" name="poids" id="poids" placeholder="Indiquer votre poids" required oninput="notLetter(this)">
+							<span class="unit">kg</span>
+						</div>
+						<br><br>
+						<input type="submit" value="Calculer">
+					</form>
+				</div>
+		</div>
+		<div id="resultat_imc">
+			Ici ton résulatat de IMC
+		</div>
 	</body>
 	<script>
 		function deco () {
@@ -123,6 +163,11 @@
 		function co () {
 			document.getElementById("connexionModal").style.display = "flex";
 		};
+		
+		function notLetter(input) {
+			//empeche l'utilisateur de taper des lettres
+            input.value = input.value.replace(/[^\d]/g, '');
+        };
 		
 	</script>
 </html>
