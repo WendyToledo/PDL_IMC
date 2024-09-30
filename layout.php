@@ -33,6 +33,11 @@
 				border-radius: 5px;
 				background-color: #f2f2f2;
 				padding: 20px;
+				display: flex;
+				width: 60%;
+				margin: 0 auto;
+				justify-content: center; 
+				border: 2px solid #B0C4DE;
 			}
 			.bandeau {
 				background-color: #6495ED;
@@ -92,6 +97,7 @@
 				right: 10px;
 				top: 45%;
 				color: #000000;
+				font-style: italic;
 			}
 		</style>
 	</head>
@@ -126,25 +132,23 @@
 			</div>
 		</div>
 		<br><br>
-		<div id="page_maincontent">	
-				<div class="container">
-					<form id="form_imc" method="POST">
-						<div class="input">
-							<label for="taille">Taille</label>
-							<input type="text" name="taille" id="taille" placeholder="Indiquer votre taille" required oninput="notLetter(this)">
-							<span class="unit">cm</span>
-						</div>
-						<br><br>
-						<div class="input">	
-							<label for="depart">Poids</label>
-							<input type="text" name="poids" id="poids" placeholder="Indiquer votre poids" required oninput="notLetter(this)">
-							<span class="unit">kg</span>
-						</div>
-						<br><br>
-						<input type="submit" value="Calculer">
-					</form>
-				</div>
-		</div>
+			<div class="container">
+				<form id="form_imc" method="POST">
+					<div class="input">
+						<label for="taille">Taille</label>
+						<input type="text" name="taille" id="taille" placeholder="Indiquer votre taille" required oninput="notLetter(this)" min="0" max="999">
+						<span class="unit">cm</span>
+					</div>
+					<br><br>
+					<div class="input">	
+						<label for="depart">Poids</label>
+						<input type="text" name="poids" id="poids" placeholder="Indiquer votre poids" required oninput="notLetter(this)" min="0" max="999">
+						<span class="unit">kg</span>
+					</div>
+					<br><br>
+					<input type="submit" value="Calculer">
+				</form>
+			</div>
 	</body>
 	<script>
 		function deco () {
