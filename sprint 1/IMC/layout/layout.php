@@ -145,10 +145,6 @@
     </div>
 </div>
 
-<?php if(isset($_SESSION['id'])) {
-         include 'view/moduleConnexionSuccessLogged.php';
-
-};?>
 
 
 <div id="connexionModal" class="modal">
