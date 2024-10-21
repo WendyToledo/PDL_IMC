@@ -88,7 +88,7 @@ class mainController
         $user = new User($request['age'], $request['weight'], $request['height'], $request['gender']);
 
         // Calculer le TMB
-        $context->mb = $mb;
+        $context->mb = calculTauxMeta($user);
 
         // Passer le résultat à la vue
         return context::SUCCESS;
