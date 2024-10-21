@@ -84,7 +84,14 @@ class mainController
         return $mb;
     }
     public function showTMB($request) {
+        $poids = isset($_POST['poids']) ? (float)$_POST['poids'] : null;
+        $taille = isset($_POST['taille']) ? (float)$_POST['taille'] : null;
+
+        // Ajout de debug pour voir les valeurs soumises
+        error_log("Poids: " . $poids);
+        error_log("Taille: " . $taille);
         // Créer un utilisateur à partir des données du formulaire
+        if($poids && $taille && $taille > 0){
         $user = new User($request['age'], $request['weight'], $request['height'], $request['gender']);
 
         // Calculer le TMB
@@ -92,5 +99,10 @@ class mainController
 
         // Passer le résultat à la vue
         return context::SUCCESS;
+        }else{
+            $context->errorMessage = "Veuillez entrer un poids et une taille valides.";
+            return context::ERROR;
+        }
+
     }
 }
