@@ -2,7 +2,7 @@
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-/** 
+/**
  * @Entity
  * @Table(name="uapv2500724.users")
  */
@@ -10,19 +10,19 @@ class users {
 
     /** @Id @Column(type="integer")
      *  @GeneratedValue
-     */ 
+     */
     public $id;
 
-    /** @Column(type="string", length=255) */ 
+    /** @Column(type="string", length=255) */
     public $email;
 
-    /** @Column(type="string", length=255) */ 
+    /** @Column(type="string", length=255) */
     public $password_hash;
 
-    /** @Column(type="datetime") */ 
+    /** @Column(type="datetime") */
     public $created_at;
 
-    /** @Column(type="datetime", nullable=true) */ 
+    /** @Column(type="datetime", nullable=true) */
     public $last_login;
 
     /**
@@ -46,7 +46,6 @@ class users {
     public function setPassword_hash($pass) {
         $this->password_hash = $pass;
     }
-
 }
 
 ?>

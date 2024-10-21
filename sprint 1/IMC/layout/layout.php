@@ -100,11 +100,6 @@
             font-weight: bold;
             cursor: pointer;
         }
-        #boutons{
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-        }
         #connexionBtn {
             margin-right: 10px;
         }
@@ -144,8 +139,6 @@
         } ?>
     </div>
 </div>
-
-
 
 <div id="connexionModal" class="modal">
     <div class="modal-content">
