@@ -273,6 +273,51 @@
 			</div>
 		<div id="resultat_imc">
 		</div>
+
+		<!--------------le Formulaire de Calcul de taux metabolique !------->
+		<br><br>
+    <!-- Formulaire pour le TMB -->
+    <div class="container">
+		<br><br>
+        <form id="form_tmb" method="POST" class="form-tmb">
+            <div class="input">
+                <label for="age">Âge</label>
+                <input type="text" name="age" id="age" placeholder="Indiquer votre âge" required oninput="notLetter(this)">
+                <span class="unit">ans</span>
+            </div>
+            <br><br>
+            <div class="input">  
+                <label for="poids_tmb">Poids</label>
+                <input type="text" name="poids_tmb" id="poids_tmb" placeholder="Indiquer votre poids" required oninput="notLetter(this)">
+                <span class="unit">kg</span>
+            </div>
+            <br><br>
+            <div class="input">  
+                <label for="taille_tmb">Taille</label>
+                <input type="text" name="taille_tmb" id="taille_tmb" placeholder="Indiquer votre taille" required oninput="notLetter(this)">
+                <span class="unit">cm</span>
+            </div>
+            <br><br>
+            <div class="input">  
+                <label for="sexe">Sexe</label>
+                <select name="sexe" id="sexe" required>
+                    <option value="homme">Homme</option>
+                    <option value="femme">Femme</option>
+                </select>
+            </div>
+            <br><br>
+            <input type="submit" value="Calculer TMB" class="submit-btn">
+        </form>
+
+    <div id="resultat_tmb">
+        <!-- Résultat du TMB s'affichera ici -->
+    </div>
+</div>
+
+
+
+
+
 	</body>
 	<script>
 		function deco () {
