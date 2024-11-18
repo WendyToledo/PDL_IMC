@@ -51,6 +51,23 @@ class userTable {
 		return $user; 
 	}
 	
+	public static function modifMdp($login,$old_pass,$new_pass) {
+		$em = dbconnection::getInstance()->getEntityManager() ;
+		
+		$userRepository = $em->getRepository('users');
+		$user = $userRepository->findOneBy(['email' => $login]);
+		 if ($user->password_hash!= $old_pass) {
+			return null;
+			
+		}
+		$user->setPassword_hash($new_pass);
+		$em->persist($user);
+		$em->flush();
+		
+
+		return $user; 
+	}
+	
 	
 
   

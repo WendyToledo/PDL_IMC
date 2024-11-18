@@ -21,10 +21,14 @@
         <div id="boutons">
             <?php if (isset($_SESSION['id'])): ?>
                 <button id="deconnexionBtn" onclick="deco()" class="bouton">Déconnexion</button>
+                <button id="modificationBtn" onclick="modif()" class="bouton">modifier le mot de passe</button>
             <?php else: ?>
                 <button id="connexionBtn" onclick="co()" class="bouton">Connexion</button>
                 <button id="InscriptionBtn" onclick="inscription()" class="bouton">Inscription</button>
             <?php endif; ?>
+        </div>
+        <div id="modification">
+			
         </div>
     </div>
 
@@ -67,6 +71,25 @@
             </form>
         </div>
     </div>
+    
+    <!-- Modals de modification du mot de passe -->
+    <div id="modifModal" class="modal">
+        <div class="modal-content">
+            <span id="close" class="closeConnexion" onclick="document.getElementById('modifModal').style.display = 'none'">&times;</span>
+            <h2>Modification du mot de passe</h2>
+            <form id="form_modif" method="POST">
+                <label for="login">Email</label>
+                <input type="text" id="login" name="login" required>
+                <label for="password">Ancien mot de passe</label>
+                <input type="password" id="old_password" name="old_password" required>
+                <label for="newPassword">Nouveau mot de passe</label>
+                <input type="password" id="newPass" name="newPass" required>
+                <label for="confirm-password">Confirmer votre mot de passe</label>
+                <input type="password" id="confirm-pass" name="confirm-pass" required>
+                <input type="submit" value="modifier" onclick="document.getElementById('modifModal').style.display = 'none'">
+            </form>
+        </div>
+    </div>
 </body>
 	<script>
 		function deco () {
@@ -76,6 +99,12 @@
 				unset($_SESSION['id']);
 			?>
 			location.reload();
+		};
+		
+		function modif () {
+			
+				document.getElementById("modifModal").style.display = "flex";
+			
 		};
 
 		function co () {

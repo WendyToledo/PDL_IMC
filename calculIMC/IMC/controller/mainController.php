@@ -111,4 +111,23 @@ class mainController
         }
 
     }
+    
+    public static function moduleModification($request, $context) {
+		$identifiant = $_POST['login'];
+        $old_password = $_POST['old_password'];
+        $new_password = $_POST['new_password'];
+        
+		$utilisateur=userTable::modifMdp($identifiant,$old_password,$new_password);
+		if($utilisateur==null){
+			$context->result="ton ancien mot de passe est incorrecte";
+			
+		}
+		else{
+		$context->utilisateur=$utilisateur;
+		$context->result="a modifié le mot de passe avec succés";
+	}
+	return context::SUCCESS;
+		 
+		
+		}
 }

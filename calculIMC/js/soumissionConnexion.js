@@ -11,8 +11,8 @@ $(document).ready(function() {
                 password: $('#password').val()
             },
             success: function(response) {
-				$('#boutons').empty();
-				$('#boutons').html(response);
+				$('#modification').empty();
+				$('#modification').html(response);
 				
             },
             error: function() {}
