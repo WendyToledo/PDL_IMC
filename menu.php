@@ -1,10 +1,19 @@
+
+
+<div>
 <nav class="side-menu">
     <ul>
         <li><a href="#" onclick="showSection('imc-section')">Calcul IMC</a></li>
         <li><a href="#" onclick="showSection('tmb-section')">Calcul TMB</a></li>
-        <li><a href="#" onclick="showSection('historique-section')">Historique</a></li>
+        <li id="hitorique" style"display: <?php echo isset($_SESSION['user_id']) ? 'block' : 'none'; ?>;">
+            <a href="#" id="historique-link" onclick="showSection('historique-section')">Historique</a></li>
+       
     </ul>
 </nav>
+<script>
+// Déclare une variable JavaScript 'isUserLoggedIn' qui sera utilisée pour vérifier si l'utilisateur est connecté
+var isUserLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
+</script>
 
 <div class="content">
     <!-- Section IMC -->
@@ -17,7 +26,6 @@
             <input type="text" name="poids" id="poids" placeholder="Indiquer votre poids" required>
             <input type="submit" value="Calculer IMC">
         </form>
-        <div id="resultat_imc">Résultat IMC ici</div>
     </div>
 
     <!-- Section TMB -->
@@ -37,12 +45,13 @@
             </select>
             <input type="submit" value="Calculer TMB">
         </form>
-        <div id="resultat_tmb">Résultat TMB ici</div>
+        <div id="resultat_tmb"></div>
     </div>
 
     <!-- Section Historique -->
     <div id="historique-section" class="section">
         <h2>Historique</h2>
-        <p>Historique sera affiché ici (vide pour l'instant).</p>
+        <?php include(__DIR__ . '/../layout/historique.php'); ?>
     </div>
+</div>
 </div>
