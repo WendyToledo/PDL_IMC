@@ -92,41 +92,4 @@
         </div>
     </div>
 </body>
-	<script>
-		function deco () {
-			<?php
-				// Destroying the session
-				session_destroy();
-				unset($_SESSION['user_id']);
-			?>
-			location.reload();
-		};
-		
-		function modif () {
-			
-				document.getElementById("modifModal").style.display = "flex";
-			
-		};
-
-		function co () {
-			document.getElementById("connexionModal").style.display = "flex";
-		};
-		
-        function inscription(){
-            document.getElementById("inscriptionModal").style.display = "flex";
-        }
-		function validateForm() {
-			var nom = document.getElementById('nom').value;
-			var prenom = document.getElementById('prenom').value;
-			var email = document.getElementById('email').value;
-			var pass = document.getElementById('pass').value;
-			var confirmPass = document.getElementById('confirm-pass').value;
-
-			if (!nom || !prenom || !email || !pass || !confirmPass) {
-				return false; //empêche la fermeture du modal
-			}
-			document.getElementById('inscriptionModal').style.display = 'none';
-			return true; //autorise la soumission du formulaire
-		}
-	</script>
 </html>
