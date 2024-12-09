@@ -1,3 +1,4 @@
+
 <?php if ($context->imc): ?>
     <div class="resultat-container">
         <h2>Votre IMC : <?= number_format($context->imc, 2) ?></h2>

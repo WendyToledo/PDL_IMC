@@ -1,5 +1,6 @@
+
 <?php
-require_once "bmr.class.php";
+// bmrTable.class.php : Gère les opérations sur la table BMR
 
 class bmrTable {
 
@@ -29,11 +30,25 @@ class bmrTable {
 		return $newBmr; 
 		
 	}
-	
-	
 
-  
+
+    // Récupérer l'historique des IMC pour un utilisateur donné
+    public static function getBmrByUserId($user_id) {
+        $em = dbconnection::getInstance()->getEntityManager();
+
+        // Recherche de l'utilisateur par ID
+        $userRepository = $em->getRepository('users');
+        $user = $userRepository->find($user_id);
+
+        if (!$user) {
+            return null; // L'utilisateur n'existe pas
+        }
+
+        // Récupérer tous les enregistrements IMC associés à cet utilisateur
+        $imcRepository = $em->getRepository('BMR');
+        $imcResults = $imcRepository->findBy(['user' => $user], ['taken_at' => 'DESC']); // Tri par date décroissante
+
+        return $imcResults;
+    }
 }
-
-
 ?>

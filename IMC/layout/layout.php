@@ -15,11 +15,11 @@
 	</head>
 
 	<body>
-		
+
 	<div class="bandeau">
         <h1>Calcul d'IMC et TMB</h1>
         <div id="boutons">
-            <?php if (isset($_SESSION['id'])): ?>
+           <?php if (isset($_SESSION['user_id'])): ?>
                 <button id="deconnexionBtn" onclick="deco()" class="bouton">Déconnexion</button>
                 <button id="modificationBtn" onclick="modif()" class="bouton">modifier le mot de passe</button>
             <?php else: ?>
@@ -48,6 +48,7 @@
                 <label for="password">Mot de passe</label>
                 <input type="password" id="password" name="password" required>
                 <input type="submit" value="Se connecter" onclick="document.getElementById('connexionModal').style.display = 'none'">
+				<p><a href="password_reset_request.php" style="text-decoration: none; color: blue;">Mot de passe oublié ?</a></p>
             </form>
         </div>
     </div>
@@ -72,20 +73,21 @@
         </div>
     </div>
     
+   
     <!-- Modals de modification du mot de passe -->
     <div id="modifModal" class="modal">
         <div class="modal-content">
             <span id="close" class="closeConnexion" onclick="document.getElementById('modifModal').style.display = 'none'">&times;</span>
             <h2>Modification du mot de passe</h2>
             <form id="form_modif" method="POST">
-                <label for="login">Email</label>
-                <input type="text" id="login" name="login" required>
+                <label for="login2">Email</label>
+                <input type="text" id="login2" name="login2" required>
                 <label for="password">Ancien mot de passe</label>
                 <input type="password" id="old_password" name="old_password" required>
                 <label for="newPassword">Nouveau mot de passe</label>
                 <input type="password" id="newPass" name="newPass" required>
-                <label for="confirm-password">Confirmer votre mot de passe</label>
-                <input type="password" id="confirm-pass" name="confirm-pass" required>
+                <label for="confirm-password2">Confirmer votre mot de passe</label>
+                <input type="password" id="confirm-pass2" name="confirm-pass2" required>
                 <input type="submit" value="modifier" onclick="document.getElementById('modifModal').style.display = 'none'">
             </form>
         </div>
@@ -96,7 +98,7 @@
 			<?php
 				// Destroying the session
 				session_destroy();
-				unset($_SESSION['id']);
+				unset($_SESSION['user_id']);
 			?>
 			location.reload();
 		};

@@ -24,14 +24,34 @@ class users {
 
     /** @Column(type="datetime", nullable=true) */ 
     public $last_login;
+    
 
-    public function setEmail($email) {
-        $this->email = $email;
-    }
- 
-    public function setPassword_hash($pass) {
-        $this->password_hash = $pass;
-    }
+    
+
+    public function getId() {
+    return $this->id;
+}
+
+public function setEmail($email) {
+    $this->email = $email;
+}
+
+public function setPassword_hash($pass) {
+    $this->password_hash = $pass;
+}
+public function getPassword_hash() {
+    return $this->password_hash; // Référence correcte à la propriété
+}
+
+// Setter et Getter pour le dernier login
+public function setLastLogin($lastLogin) {
+    $this->last_login = $lastLogin;
+}
+
+public function getLastLogin() {
+    return $this->last_login;
+}
+
 }
 
 ?>

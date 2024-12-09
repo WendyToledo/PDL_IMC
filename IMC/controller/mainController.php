@@ -8,20 +8,27 @@ class mainController
     }
 
 
-    public static function moduleConnexion($request,$context)
-    {
-        $identifiant = $_POST['login'];
-        $pass = $_POST['password'];
+    public static function moduleConnexion($request, $context)
+{
+    $identifiant = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
+    $password = $_POST['password']; // Mot de passe brut
 
-        $user =  userTable::getUserByLoginAndPass($identifiant,$pass);
-        if($user) {
-            $_SESSION['user_id'] = $user->id;
-            $context->utilisateur  =$user;
-            $user1=userTable::updateLastLogin($identifiant,$pass);
-            return context::SUCCESS;
-        }
-        return context::ERROR;
-    }
+    $user = userTable::getUserByLogin($identifiant);
+
+   
+        userTable::updateLastLogin($user->getId());
+
+        $_SESSION['user_id'] = $user->getId();
+        $context->utilisateur = $user;
+
+        echo "Connexion réussie";
+        return context::SUCCESS;
+    
+
+
+   
+}
+
 
     public static function moduleDeconnexion($request,$context)
     {
@@ -48,6 +55,7 @@ class mainController
     // Méthode de calcul de l'IMC
     public static function calculImc($request, $context)
 {
+	
 	// Vérification de la présence des paramètres nécessaires
 	$poids = isset($_POST['poids']) ? (float)$_POST['poids'] : null;
 	$taille = isset($_POST['taille']) ? (float)$_POST['taille'] : null;
@@ -68,10 +76,11 @@ class mainController
 			/// Enregistrement dans la base de données
 			$user_id = $_SESSION['user_id'];
 			$result = imcTable::addImc($user_id, $poids, $taille, $imc);
+			// Retourne le succès avec les données calculées
+		
 		}
-
-		// Retourne le succès avec les données calculées
 		return context::SUCCESS;
+		
 	} else {
 		// Si les paramètres sont manquants ou incorrects
 		$context->errorMessage = "Veuillez entrer un poids et une taille valides.";
@@ -120,13 +129,13 @@ class mainController
     
     
     public static function moduleModification($request, $context) {
-		$identifiant = $_POST['login'];
+		$identifiant = $_POST['login2'];
         $old_password = $_POST['old_password'];
         $new_password = $_POST['new_password'];
-        
+ 
 		$utilisateur=userTable::modifMdp($identifiant,$old_password,$new_password);
 		if($utilisateur==null){
-			$context->result="ton ancien mot de passe est incorrecte";
+			$context->result="ton ancien mot de passe est incorrecte ";
 			
 		}
 		else{
@@ -137,4 +146,20 @@ class mainController
 		 
 		
 		}
+		
+		
+    public static function showHistorique($request, $context)
+{
+	
+	$user_id = $_SESSION['user_id']; 
+
+    // Récupérer l'historique IMC et TMB
+    $imcResults = imcTable::getImcByUserId($user_id);
+    $bmrResults = BMRTable::getBmrByUserId($user_id);
+	$context->imcResults=$imcResults;
+	$context->bmrResults=$bmrResults;
+	$context->user_id=$user_id;
+	return context::SUCCESS;
+		
+}
 }
