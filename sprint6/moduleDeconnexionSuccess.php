@@ -11,4 +11,6 @@ utilisateur déconnecté<br><br>
 	//enlever les resultats 
 	document.getElementById('resultat_imc').innerHTML = '';
 	document.getElementById('resultat_tmb').innerHTML = '';
+	//afficher la section IMC
+	showSection('imc-section');
 </script>
