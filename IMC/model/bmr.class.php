@@ -4,9 +4,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /** 
  * @Entity
- * @Table(name="uapv2100281.measurements")
+ * @Table(name="uapv2100281.bmr")
  */
-class Measurement {
+class BMR {
 
     /** @Id @Column(type="integer")
      *  @GeneratedValue
@@ -14,7 +14,7 @@ class Measurement {
     public $id;
 
     /** 
-     * @ManyToOne(targetEntity="users", inversedBy="measurements")
+     * @ManyToOne(targetEntity="users", inversedBy="bmr")
      * @JoinColumn(name="user_id", referencedColumnName="id")
      */
     public $user;
@@ -24,9 +24,15 @@ class Measurement {
 
     /** @Column(type="decimal", precision=4, scale=2) */ 
     public $height;
+    
+    /** @Column(type="integer") */ 
+    public $age;
+    
+    /** @Column(type="string", length=10) */ 
+    public $gender;
 
     /** @Column(type="decimal", precision=4, scale=2) */ 
-    public $calculated_imc;
+    public $calculated_bmr;
 
     /** @Column(type="datetime") */ 
     public $taken_at;

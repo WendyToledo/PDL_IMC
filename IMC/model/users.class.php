@@ -1,3 +1,4 @@
+
 <?php
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -25,19 +26,17 @@ class users {
     /** @Column(type="datetime", nullable=true) */ 
     public $last_login;
 
-    /**
-     * @OneToMany(targetEntity="Measurement", mappedBy="user")
-     */
-    private $measurements;
+    
 
-    /*public function __construct() {
-        $this->measurements = new ArrayCollection();
-        $this->created_at = new \DateTime(); // Par défaut, la date de création est la date actuelle
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+ 
+    public function setPassword_hash($pass) {
+        $this->password_hash = $pass;
     }
 
-    public function getMeasurements() {
-        return $this->measurements;
-    }*/
+    
 }
 
 ?>
